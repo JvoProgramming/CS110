@@ -7,26 +7,26 @@
     <link rel="stylesheet" href="style.css" />
     <script src="main.js"></script>
   </head>
-  <body>
+  <body onload="changePlayer()">
 
     <h1>Tic Tac Toe</h1>
-    <h2>Its your turn, <span class="display_player"></span>.</h2>
+    <h2 id="displayWin">Its your turn, <span class="display_player" id="playerName"></span>.</h2>
 
     <div class="game_board">
       <div class="row">
-        <div class="one" onclick="play('one')"><span class="xo"></span></div>
-        <div class="two"><span class="xo" onclick="play('two')"></span></div>
-        <div class="three"><span class="xo" onclick="play('three')"></span></div>
+        <div class="one" onclick="play(1)"><span class="xo" id="xo1"></span></div>
+        <div class="two" onclick="play(2)"><span class="xo" id="xo2" ></span></div>
+        <div class="three" onclick="play(3)"><span class="xo" id="xo3"></span></div>
       </div>
       <div class="row">
-        <div class="four"><span class="xo" onclick="play('four')"></span></div>
-        <div class="five"><span class="xo" onclick="play('five')"></span></div>
-        <div class="six"><span class="xo" onclick="play('six')"></span></div>
+        <div class="four" onclick="play(4)"><span class="xo" id="xo4"></span></div>
+        <div class="five" onclick="play(5)"><span class="xo" id="xo5"></span></div>
+        <div class="six" onclick="play(6)"><span class="xo" id="xo6"></span></div>
       </div>
       <div class="row">
-        <div class="seven"><span class="xo" onclick="play('seven')"></span></div>
-        <div class="eight"><span class="xo" onclick="play('eight')"></span></div>
-        <div class="nine"><span class="xo" onclick="play('nine')"></span></div>
+        <div class="seven" onclick="play(7)"><span class="xo" id="xo7"></span></div>
+        <div class="eight" onclick="play(8)"><span class="xo" id="xo8"></span></div>
+        <div class="nine" onclick="play(9)"><span class="xo" id="xo9"></span></div>
       </div>
     </div>
 
