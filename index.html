@@ -6,11 +6,14 @@
     
     <link rel="stylesheet" href="style.css" />
     <script src="main.js"></script>
+    <script src="jquery-3.6.0.js"></script>
   </head>
   <body onload="changePlayer()">
 
     <h1>Tic Tac Toe</h1>
-    <h2 id="displayWin">Its your turn, <span class="display_player" id="playerName"></span>.</h2>
+    <h2><span id="displayWin">It's your turn, </span><span id="playerName">.</span></h2>
+    <h2 id ="scoreBoard">Scores: X: <span id="xScore"></span>, O: <span id="yScore"></span></h2>
+    <div id="aiCheck"><input type="checkbox" onclick=""> Enable AI </div>
 
     <div class="game_board">
       <div class="row">
@@ -30,8 +33,8 @@
       </div>
     </div>
 
-    <button class="new_game">New Game</button>
-    <button class="reset">Reset</button>
+    <button class="new_game" onclick="newGame()">New Game</button>
+    <button class="reset" onclick="window.location.reload()">Reset</button>
   </body>
 
 

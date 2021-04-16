@@ -3,12 +3,18 @@ var playerIcon = "X";
 var playerOne = true;
 var gameEnd = false;
 var item;
+var turnElement;
+var xScore = 0;
+var yScore = 0;
+var showWinner;
+var aiCheckBox;
 
 function play(userChoice){
     if(gameEnd == true){
         alert("Game has already ended! Press New Game or Reset");
         return false;
     }
+    
     switch(userChoice){
         case 1: 
             item = document.getElementById("xo1");
@@ -50,45 +56,67 @@ function play(userChoice){
 }
 
 function changePlayer(){
-    let turnElement = document.getElementById("playerName");
+    turnElement = document.getElementById("playerName");
     if(!playerOne){
         playerIcon = "O";
         playerOne = true;
-        turnElement.innerHTML = "Player Two";
+        turnElement.innerHTML = playerIcon;
     }
     else{
         playerIcon = "X";
         playerOne = false;
-        turnElement.innerHTML = "Player One";
+        turnElement.innerHTML = playerIcon;
     }
 }
 
 function insert(num){
+    var aiCheckBox = document.getElementById("aiCheck");
     if(boardArray[num] == undefined){
         boardArray[num] = playerIcon;
         item.innerHTML = playerIcon;
-        changePlayer();
     }
     else{
         alert("This slot is already taken. Choose another one!");
     }
-    console.log(boardArray[0]);
-    console.log(boardArray[1]);
-    console.log(boardArray[2]);
-    console.log(boardArray[3]);
-    console.log(boardArray[4]);
-    console.log(boardArray[5]);
-    console.log(boardArray[0] == boardArray[1] == boardArray[2]);
+    if(aiCheckBox.checked == true){
+        console.log("AI is turned on!");
+    }
+    else{
+        console.log("AI is turned off!");
+    }
+
     checkScore();
+    if(!gameEnd){
+        changePlayer();
+    }
 }
 
 function checkScore(){
-    let showWinner = document.getElementById("displayWin");
-    console.log("CHECKING SCORE");
+    showWinner = document.getElementById("displayWin");
     if(boardArray[0] == boardArray[1] && boardArray[1] == boardArray[2] && boardArray[0] != undefined || boardArray[3] == boardArray[4] && boardArray[4] == boardArray[5] && boardArray[3] != undefined || boardArray[6] == boardArray[7] && boardArray[7] == boardArray[8] && boardArray[6] != undefined || boardArray[0] == boardArray[3] && boardArray[3] == boardArray[6] && boardArray[0] != undefined || boardArray[1] == boardArray[4] && boardArray[4] == boardArray[7] && boardArray[1] != undefined || boardArray[2] == boardArray[5] && boardArray[5] == boardArray[8] && boardArray[2] != undefined || boardArray[0] == boardArray[4] && boardArray[4] == boardArray[8] && boardArray[0] != undefined || boardArray[2] == boardArray[4] && boardArray[4] == boardArray[6] && boardArray[2] != undefined){
         gameEnd = true;
     }
     if(gameEnd){
-        showWinner.innerHTML = "PLAYER ONE WINS!!!"
+        showWinner.innerHTML = turnElement.innerHTML + " WINS!!!";
+        turnElement.innerHTML = '';
+        if (playerIcon == "X"){
+            xScore++;
+            document.getElementById("xScore").innerHTML = xScore;
+        }
+        else{
+            yScore++;
+            document.getElementById("yScore").innerHTML = yScore;
+        }
     }
+}
+
+function newGame(){
+    $(".xo").html('');
+    gameEnd = false;
+    boardArray = [];
+    showWinner = document.getElementById("displayWin");
+    showWinner.innerHTML = "It's your turn, ";
+    turnElement.innerHTML = "X";
+    playerIcon = "X";
+    playerOne = false;
 }
