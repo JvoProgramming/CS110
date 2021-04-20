@@ -78,13 +78,13 @@ function insert(num){
     else{
         alert("This slot is already taken. Choose another one!");
     }
+    //AI MOVES AFTER PLAYER INSERTS MOVE
     if(aiCheckBox.checked == true){
         console.log("AI is turned on!");
     }
     else{
         console.log("AI is turned off!");
     }
-
     checkScore();
     if(!gameEnd){
         changePlayer();
@@ -120,3 +120,8 @@ function newGame(){
     playerIcon = "X";
     playerOne = false;
 }
+
+
+function handleClick(cb) {
+    display("Clicked, new value = " + cb.checked);
+  }
