@@ -71,7 +71,6 @@ function changePlayer(){
 }
 
 function insert(num){
-    var aiCheckBox = document.getElementById("aiCheck");
     if(boardArray[num] == undefined){
         boardArray[num] = playerIcon;
         item.innerHTML = playerIcon;
@@ -80,14 +79,13 @@ function insert(num){
         alert("This slot is already taken. Choose another one!");
     }
     checkScore();
-    //AI MOVES AFTER PLAYER INSERTS MOVE
-    if(AIswitch && playerTwo){
-        console.log("AI moves");
-        AIchoice();
-        checkScore();
-    }
     if(!gameEnd){
         changePlayer();
+    }
+    console.log("USER INSERT");
+    if(AIswitch == true && playerTwo == true){
+        console.log("AI CHOICE GOING TO BE MADE");
+        setTimeout(AIchoice, 2000);
     }
 }
 
@@ -133,6 +131,30 @@ function newGame(){
     playerOne = false;
 }
 
-AIchoice(){
-    
+function AIchoice(){
+    var i;
+    var aiArray = new Array();
+    for(i = 0; i < boardArray.length; i++){
+        if(boardArray[i] == undefined){
+            aiArray.push(i)
+        }
+    }
+    console.log("BOARDARRAY: " + boardArray);
+    var aiGenerate = aiArray[Math.floor(Math.random() * aiArray.length)];
+    console.log("AI ARRAY: " + aiArray);
+    play(aiGenerate);
+    console.log("AI MADE CHOICE: " + aiGenerate);
+    //AIinsert(aiGenerate);
 }
+
+/*function AIinsert(num){
+    if(boardArray[num] == undefined){
+        boardArray[num] = playerIcon;
+        item.innerHTML = playerIcon;
+    }
+    checkScore();
+    if(!gameEnd){
+        changePlayer();
+    }
+    console.log("BOT INSERT");
+}*/
