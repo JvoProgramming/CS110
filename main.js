@@ -1,6 +1,6 @@
 var boardArray = new Array(9);
 var playerIcon = "X";
-var playerOne = true;
+var playerTwo = true;
 var gameEnd = false;
 var item;
 var turnElement;
@@ -8,6 +8,7 @@ var xScore = 0;
 var yScore = 0;
 var showWinner;
 var aiCheckBox;
+var AIswitch = true;
 
 function play(userChoice){
     if(gameEnd == true){
@@ -57,14 +58,14 @@ function play(userChoice){
 
 function changePlayer(){
     turnElement = document.getElementById("playerName");
-    if(!playerOne){
+    if(!playerTwo){
         playerIcon = "O";
-        playerOne = true;
+        playerTwo = true;
         turnElement.innerHTML = playerIcon;
     }
     else{
         playerIcon = "X";
-        playerOne = false;
+        playerTwo = false;
         turnElement.innerHTML = playerIcon;
     }
 }
@@ -78,14 +79,13 @@ function insert(num){
     else{
         alert("This slot is already taken. Choose another one!");
     }
-    //AI MOVES AFTER PLAYER INSERTS MOVE
-    if(aiCheckBox.checked == true){
-        console.log("AI is turned on!");
-    }
-    else{
-        console.log("AI is turned off!");
-    }
     checkScore();
+    //AI MOVES AFTER PLAYER INSERTS MOVE
+    if(AIswitch && playerTwo){
+        console.log("AI moves");
+        AIchoice();
+        checkScore();
+    }
     if(!gameEnd){
         changePlayer();
     }
@@ -110,6 +110,18 @@ function checkScore(){
     }
 }
 
+function toggleAI(){
+    var checkboxItem = document.getElementById("aiCheckBox").checked;
+    if(checkboxItem == true){
+        console.log("AI TURNED ON");
+        AIswitch = true;
+    }
+    else{
+        console.log("AI TURNED OFF");
+        AIswitch = false;
+    }
+}
+
 function newGame(){
     $(".xo").html('');
     gameEnd = false;
@@ -121,7 +133,6 @@ function newGame(){
     playerOne = false;
 }
 
-
-function handleClick(cb) {
-    display("Clicked, new value = " + cb.checked);
-  }
+AIchoice(){
+    
+}
