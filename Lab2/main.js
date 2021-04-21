@@ -117,11 +117,11 @@ function checkScore(){
         showWinner.innerHTML = playerIcon + " WINS!!!";
         turnElement.innerHTML = '';
         if (playerIcon == "X"){
-            xScore++;
+            xScore += .5;
             document.getElementById("xScore").innerHTML = xScore;
         }
         else{
-            yScore++;
+            yScore += .5;
             document.getElementById("yScore").innerHTML = yScore;
         }
     }
