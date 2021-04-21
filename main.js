@@ -1,4 +1,5 @@
 var boardArray = new Array(9);
+var aiArray = new Array(1,2,3,4,5,6,7,8,9);
 var playerIcon = "X";
 var playerTwo = true;
 var gameEnd = false;
@@ -8,7 +9,10 @@ var xScore = 0;
 var yScore = 0;
 var showWinner;
 var aiCheckBox;
-var AIswitch = true;
+var AIswitch = false;    
+var boardCount = 0;
+var boardFull = false;
+var playerWon = false;
 
 function play(userChoice){
     if(gameEnd == true){
@@ -77,25 +81,40 @@ function insert(num){
     }
     else{
         alert("This slot is already taken. Choose another one!");
+        return;
     }
+    boardCount++;
     checkScore();
     if(!gameEnd){
         changePlayer();
     }
-    console.log("USER INSERT");
-    if(AIswitch == true && playerTwo == true){
-        console.log("AI CHOICE GOING TO BE MADE");
+    if(AIswitch == true && playerTwo == true && gameEnd == false){
+        showWinner.innerHTML = "AI is thinking of the next move...";
+        turnElement.innerHTML = "";
         setTimeout(AIchoice, 2000);
     }
+    else{
+        showWinner.innerHTML = "It is your turn, "
+    }
+    var findIndex = aiArray.indexOf(num+1);
+    if(findIndex > -1){
+        aiArray.splice(findIndex, 1);
+    }
+    checkScore();
 }
 
 function checkScore(){
     showWinner = document.getElementById("displayWin");
     if(boardArray[0] == boardArray[1] && boardArray[1] == boardArray[2] && boardArray[0] != undefined || boardArray[3] == boardArray[4] && boardArray[4] == boardArray[5] && boardArray[3] != undefined || boardArray[6] == boardArray[7] && boardArray[7] == boardArray[8] && boardArray[6] != undefined || boardArray[0] == boardArray[3] && boardArray[3] == boardArray[6] && boardArray[0] != undefined || boardArray[1] == boardArray[4] && boardArray[4] == boardArray[7] && boardArray[1] != undefined || boardArray[2] == boardArray[5] && boardArray[5] == boardArray[8] && boardArray[2] != undefined || boardArray[0] == boardArray[4] && boardArray[4] == boardArray[8] && boardArray[0] != undefined || boardArray[2] == boardArray[4] && boardArray[4] == boardArray[6] && boardArray[2] != undefined){
         gameEnd = true;
+        playerWon = true;
     }
-    if(gameEnd){
-        showWinner.innerHTML = turnElement.innerHTML + " WINS!!!";
+    if(boardCount == 9){
+        boardFull = true;
+        gameEnd = true;
+    }
+    if(gameEnd == true && playerWon == true){
+        showWinner.innerHTML = playerIcon + " WINS!!!";
         turnElement.innerHTML = '';
         if (playerIcon == "X"){
             xScore++;
@@ -106,16 +125,23 @@ function checkScore(){
             document.getElementById("yScore").innerHTML = yScore;
         }
     }
+    if(gameEnd == true && playerWon == false){
+        showWinner.innerHTML = "It's a tie!";
+        turnElement.innerHTML = "";
+    }
 }
 
 function toggleAI(){
     var checkboxItem = document.getElementById("aiCheckBox").checked;
     if(checkboxItem == true){
-        console.log("AI TURNED ON");
         AIswitch = true;
+        if(playerIcon == "O"){
+            showWinner.innerHTML = "AI is thinking of the next move...";
+            turnElement.innerHTML = "";
+        }
+        setTimeout(AIchoice, 2000);
     }
     else{
-        console.log("AI TURNED OFF");
         AIswitch = false;
     }
 }
@@ -128,33 +154,17 @@ function newGame(){
     showWinner.innerHTML = "It's your turn, ";
     turnElement.innerHTML = "X";
     playerIcon = "X";
-    playerOne = false;
+    playerTwo = false;
+    aiArray = [1,2,3,4,5,6,7,8,9];
+    boardFull = false;
+    boardCount = 0;
+    playerWon = false;
 }
 
 function AIchoice(){
-    var i;
-    var aiArray = new Array();
-    for(i = 0; i < boardArray.length; i++){
-        if(boardArray[i] == undefined){
-            aiArray.push(i)
-        }
+    if(playerIcon == "X"){
+        return;
     }
-    console.log("BOARDARRAY: " + boardArray);
     var aiGenerate = aiArray[Math.floor(Math.random() * aiArray.length)];
-    console.log("AI ARRAY: " + aiArray);
     play(aiGenerate);
-    console.log("AI MADE CHOICE: " + aiGenerate);
-    //AIinsert(aiGenerate);
 }
-
-/*function AIinsert(num){
-    if(boardArray[num] == undefined){
-        boardArray[num] = playerIcon;
-        item.innerHTML = playerIcon;
-    }
-    checkScore();
-    if(!gameEnd){
-        changePlayer();
-    }
-    console.log("BOT INSERT");
-}*/
