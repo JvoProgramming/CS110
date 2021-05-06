@@ -1,0 +1,334 @@
+/* Feel free to edit CSS of body if you'd like. We provide you the light gray background color and font family in the body styling */
+body {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  margin: 0;
+  background: transparent;
+  background-color: #e6ecf0 !important;
+}
+
+/* TODO: Create CSS for your Twitter Mockup */
+
+html {
+  position: fixed;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+}
+
+header{
+position: fixed;
+top: 0; left:0;
+z-index: 100;
+}
+
+
+#skip-link{
+  display:none;
+}
+
+.nav-link:hover{
+color: #0091e3 !important;
+text-decoration: underline;
+}
+
+.nav-items{
+position: relative;
+left:70%;
+font-weight:bold;
+margin: 0px 10px;
+}
+
+.nav-item img{
+transform: translateX(-25%);
+transform: translateY(25%);
+left: 50%;
+position: absolute;
+height: 25px;
+width: 25px;
+}
+
+.nav-button{
+position: relative;
+left:275%;
+}
+
+.tweet-nav-button{
+  position: absolute;
+  left:75%;
+  }
+
+#button1{
+border: none;
+border-radius:100px;
+font-weight: bold;
+background-color: #49b3f4;
+color:white;
+}
+
+#content-wrapper{
+position:relative;
+max-width: 1190px;
+margin: 56px auto;
+display:flex
+}
+
+#content-left{
+position:relative;
+background-color: white !important;
+width:380px;
+height:325px;
+}
+
+#cover-picture{
+position:absolute;
+border:40px solid black;
+}
+
+#profile-info{
+position:absolute;
+top:70px;
+left:30px;
+}
+
+#profile-pic{
+position:absolute;
+object-fit: cover;
+object-position: center center;
+width: 100px;
+height: 100px;
+border-radius: 50%;
+top:30px;
+border:3px solid white;
+}
+
+#profile-name{
+position:absolute;
+left:125px;
+top:65px;
+text-decoration: underline;
+font-weight: bold;
+}
+
+#profile-at{
+position:absolute;
+left:125px;
+top:85px;
+color: #808080
+}
+
+#profile-stats{
+position:absolute;
+top:245px;
+font-weight: bold;
+display: flex
+}
+
+#profile-tweets{
+position:absolute;
+left:50px;
+}
+
+#profile-following{
+position:absolute;
+left:150px;
+}
+
+#profile-followers{
+position:absolute;
+left:270px;
+}
+
+#profile-tweetsnum{
+position:absolute;
+left:50px;
+top:35px;
+}
+
+#profile-followingnum{
+position:absolute;
+left:150px;
+top:35px;
+}
+
+#profile-followersnum{
+position:absolute;
+left:270px;
+top:35px;
+}
+
+.profile-nums{
+color: #49b3f4;
+}
+
+.profile-text{
+color: #67757f
+}
+
+#content-center{
+position:relative;
+display: flex;
+flex-direction: column;
+}
+
+.content{
+background-color: white;
+position: relative;
+border-bottom: 1px solid #e6ecf0;
+width:450px;
+}
+
+.module{
+margin-right:15px;
+}
+
+.tweet-name{
+position:relative;
+left:90px;
+bottom:35px;
+font-weight:bold;
+}
+.tweet-at{
+position:relative;
+bottom: 75px;
+left: 135px;
+color: #808080;
+}
+
+.tweet-text{
+position:absolute;
+left:88px;
+width: 350px;
+top:50px;
+}
+
+.tweet-pic{
+position:relative;
+object-fit: cover;
+object-position: center center;
+width: 60px;
+height: 60px;
+border-radius: 50%;
+top:20px;
+left:15px;
+}
+
+#content-right{
+position: relative;
+width: 290px;
+height: 350px;
+background-color: white;
+padding: 10px;
+
+}
+
+#content-right-text{
+font-weight: bold;
+font-size:large;
+height:10px;
+}
+
+#content-right-list{
+display:flex;
+flex-direction: column;
+
+}
+
+.content-right-item{
+border-bottom: 1px solid #e6ecf0;
+height: 100px;
+margin-top: 20px;
+}
+
+.follow-pic{
+position:relative;
+object-fit: cover;
+object-position: center center;
+width: 60px;
+height: 60px;
+border-radius: 50%;
+}
+
+.follow-list-name{
+position: relative;
+font-weight: bold;
+left: 70px;
+bottom: 65px;
+}
+
+.follow-list-at{
+position: relative;
+left: 135px;
+bottom: 105px;
+}
+
+.follow-button{
+position: relative;
+border-style: solid;
+border-color: #49b3f4;
+border-radius:100px;
+font-weight: bold;
+background-color: white;
+color:#49b3f4;
+bottom: 115px;
+left: 50px;
+}
+
+.tweet-heart{
+  position:relative;
+  left:90px;
+  bottom:20px;
+  width:25px;
+  height:25px;
+}
+
+.tweet-icons a{
+  text-decoration: none;
+}
+
+.tweet-comment{
+  position:relative;
+  left:190px;
+  bottom:20px;
+  width:25px;
+  height:25px;
+}
+
+.tweet-retweet{
+  position:relative;
+  left:290px;
+  bottom:20px;
+  width:25px;
+  height:25px;
+}
+
+.nav-icons{
+  position: relative;
+  bottom: 10px;
+  margin-left: 10px;
+}
+
+.nav-text{
+  margin-bottom: 0px;
+}
+
+@media all and (min-width: 1301px){
+  .nav-icons{
+    display:none;
+  }
+}
+
+@media all and (max-width: 1300px){
+  #content-right{
+    display:none;
+  }
+  .nav-items{
+    left:0%
+  }
+  .nav-text{
+    display:none;
+  }
+  .nav-icons a{
+    color: #49b3f4;
+  }
+}
