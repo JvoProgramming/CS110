@@ -1,0 +1,37 @@
+html, body{
+    height: 100%;
+    background-color: #F7EFEF
+}
+
+.app{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.header{
+    text-align: center;
+    margin: 0 0 10px 0;
+    background-color: #DFDEEE
+}
+
+#tweets{
+    flex: 1;
+}
+
+#refresh{
+    margin: 10px
+}
+
+ul{
+    background-color: #DFEEDE
+}
+
+#searchBox{
+    margin: 10px
+}
+
+li{
+    margin: 20px
+}
